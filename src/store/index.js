@@ -1,13 +1,27 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    sampleBlogCards: [
+      { blogTitle: 'Blog Card #1', blogCoverPhoto: 'stock-1', blogDate: 'May 1, 2021' },
+      { blogTitle: 'Blog Card #2', blogCoverPhoto: 'stock-2', blogDate: 'May 1, 2021' },
+      { blogTitle: 'Blog Card #3', blogCoverPhoto: 'stock-3', blogDate: 'May 1, 2021' },
+      { blogTitle: 'Blog Card #4', blogCoverPhoto: 'stock-4', blogDate: 'May 1, 2021' }
+    ],
+    editPost: null
+  },
+  mutations: {
+    // 修改编辑状态
+    TOGGLEEDITPOST(state, payload) {
+      state.editPost = payload;
+      console.log(state.editPost);
+    }
+  },
   actions: {},
   getters: {}
-})
+});
 
-export default store
+export default store;

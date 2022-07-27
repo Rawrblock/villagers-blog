@@ -8,18 +8,19 @@
       <!-- 导航 -->
       <div class="nav-links">
         <ul v-show="!mobile">
-          <router-link class="link" to="#">Home</router-link>
-          <router-link class="link" to="#">Blogs</router-link>
+          <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
+          <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
           <router-link class="link" to="#">Create Post</router-link>
-          <router-link class="link" to="#">Login/Register</router-link>
+          <router-link class="link" :to="{ name: 'Login' }">Login/Register</router-link>
         </ul>
       </div>
     </nav>
     <menuIcon @click="toggleMobileNav" class="menu-icon" v-show="mobile" />
+    <!-- 移动端导航 -->
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
-        <router-link class="link" to="#">Home</router-link>
-        <router-link class="link" to="#">Blogs</router-link>
+        <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
+        <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
         <router-link class="link" to="#">Create Post</router-link>
         <router-link class="link" to="#">Login/Register</router-link>
       </ul>
@@ -147,6 +148,23 @@ header {
       padding: 15px 0;
       color: #fff;
     }
+  }
+
+  // vue指定transiton标签过渡类
+  .mobile-nav-enter-active,
+  .mobile-nav-leave-active {
+    transition: all 1s ease;
+  }
+
+  .mobile-nav-enter {
+    transform: translateX(-250px);
+  }
+  .mobile-nav-enter-to {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-leave-to {
+    transform: translateX(-250px);
   }
 }
 </style>
